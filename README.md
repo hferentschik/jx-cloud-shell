@@ -18,4 +18,7 @@ $ git push origin master
 
 # Push image to Google Container Registry
 $ cloudshell env push
+
+# Update image
+# cloudshell env update-default-image --image gcr.io/apps-dev-229310/jx-cloud-shell:latest
 ```
