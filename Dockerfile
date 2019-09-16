@@ -10,12 +10,15 @@ COPY bash_aliases /scripts/bash_aliases
 RUN chmod -R o+rwx /scripts
 
 ENV KREW_ROOT=/krew
-RUN mkdir $KREW
-RUN chmod -R o+rwx $KREW
+RUN mkdir $KREW_ROOT
+RUN chmod -R o+rwx $KREW_ROOT
 
 RUN curl -fsSLO "https://storage.googleapis.com/krew/v0.2.1/krew.{tar.gz,yaml}" && \
     tar zxvf krew.tar.gz && \
     ./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" install --manifest=krew.yaml --archive=krew.tar.gz
+
+RUN chmod -R o+rwx $KREW_ROOT
+RUN chmod -R o+rw /tmp
 
 ENV K9S_VERSION=0.8.4
 ENV JX_VERSION=2.0.686

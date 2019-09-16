@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+#set -e
 
 cloudshell env build-local
 cloudshell env push
